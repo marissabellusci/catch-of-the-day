@@ -22,7 +22,7 @@ const fishes = {
     name: "Sea Scallops",
     image: "/images/scallops.jpg",
     desc:
-      "Big, sweet and tender. True dry-pack scallops from the icey waters of Alaska. About 8-10 per pound",
+      "Big, sweet and tender. True dry-pack scallops from the icey waters of Alaska.",
     price: 1684,
     status: "unavailable"
   },
