@@ -5,7 +5,6 @@ import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
 import base from '../base';
-import fishes from '../sample-fishes';
 
 class App extends React.Component {
     state = {
@@ -14,13 +13,27 @@ class App extends React.Component {
     }
 
     componentDidMount(){
-        const params = this.props.match;
-        this.ref = base.syncState(`${params.storeId}/fishes`,{
+
+        //first re-instate our local storage so it doesnt overwrite
+        const localStorageRef = localStorage.getItem(this.props.match.params.StoreId);
+        if(localStorageRef) {
+            this.setState({ order: JSON.parse(localStorageRef)});
+        }
+        console.log(localStorageRef);
+
+        //then sets state when component mounts
+        this.ref = base.syncState(`${this.props.match.params.StoreId}/fishes`,{
             context: this,
             state: 'fishes',
-        })
+        });
         
     };
+
+    componentDidUpdate(){
+        console.log(this.state.order);
+        localStorage.setItem(this.props.match.params.StoreId, JSON.stringify(this.state.order));
+        
+    }
 
     componentWillUnmount(){
         base.removeBinding(this.ref);
