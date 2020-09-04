@@ -30,7 +30,6 @@ class App extends React.Component {
     };
 
     componentDidUpdate(){
-        console.log(this.state.order);
         localStorage.setItem(this.props.match.params.StoreId, JSON.stringify(this.state.order));
         
     }
@@ -48,6 +47,15 @@ class App extends React.Component {
         this.setState({
             fishes: fishes, //overwrites old fishes state with new fishes variable
         });
+    }
+
+    updateFish = (key, updatedFish) => {
+        //1. take a copy of the current state
+        const fishes = this.state.fishes;
+        //2. update that state
+        fishes[key] = updatedFish;
+        //3. set that to state
+        this.setState({fishes: fishes});
     }
 
     loadSampleFishes = () => {
@@ -75,7 +83,11 @@ class App extends React.Component {
                     </div>
 
                     <Order fishes = {this.state.fishes} order={this.state.order}/> 
-                    <Inventory addFish = {this.addFish} loadSampleFishes = {this.loadSampleFishes}/>
+                    <Inventory 
+                    addFish = {this.addFish} 
+                    updateFish = {this.updateFish}
+                    loadSampleFishes = {this.loadSampleFishes}
+                    fishes = {this.state.fishes}/>
                 
             </div>
         )
