@@ -398,6 +398,7 @@ ul.order li {
 }
 ul.order li:hover button {
   display: inline;
+  margin: 1px;
 }
 ul.order li button {
   border: 0;
@@ -412,6 +413,7 @@ ul.order li.unavailable {
 ul.order li .price {
   font-size: 1.2rem;
 }
+
 ul.order li span.count {
   position: relative;
   overflow: hidden;
@@ -420,6 +422,13 @@ ul.order li span.count {
 ul.order li span.count span {
   display: inline-block;
 }
+
+#price {
+  position: absolute;
+  right: 0;
+  margin-right: 42px;
+}
+
 .total {
   padding: 2rem 0;
   font-size: 1.4rem;
@@ -428,6 +437,7 @@ ul.order li span.count span {
 }
 .total strong {
   float: right;
+  margin-right: 22px;
 }
 .order-title {
   text-align: center;
@@ -525,6 +535,7 @@ input[type=submit] {
   position: relative;
   z-index: 2;
 }
+
 button[disabled],
 input[type=submit][disabled] {
   color: #d12028;
@@ -630,3 +641,4 @@ input[type=submit].twitter:after {
   text-align: center;
   font-size: 3rem;
 }
+
