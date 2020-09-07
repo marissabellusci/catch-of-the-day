@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = props => ( //uses implicit return because there is an arrow function
         <header className='top'>
@@ -39,5 +40,9 @@ const Header = props => ( //uses implicit return because there is an arrow funct
 //        )
 //    }
 //}
+
+Header.propTypes = {
+    tagline: PropTypes.string.isRequired
+}
 
 export default Header;
